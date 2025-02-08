@@ -1,40 +1,41 @@
 from pydantic import BaseModel
 from typing import List, Dict, Union
-"""
-JSON schemas accepted 
 
-{
-    "data": [
-
-        {
-            "item": {
-                "field1": "value1",
-                "field2": 2,
-                "field3": 3.0,
-                "field4": true,
-                "field5": [1, 2, 3], # or any list that containes values of the types mentioned above (LIST OF LISTS OR LIST OF DICTS/OBJs NOT SUPPORTED)
-            }
-        },
-        {
-            "item": {
-                "field1": "value2",
-                "field2": 3,
-                "field3": 4.0,
-                "field4": false,
-                "field5": [4, 5, 6],
-            }
-        },
-    ]
-    
-}
-
-"""
 
 class JsonDataItem(BaseModel):
 
     item: Dict[str, Union[  str, int, float, bool, List[ Union[str, int, float, bool] ]  ] ]
 
 
+
 class JsonDataContainer(BaseModel):
 
     data: List[JsonDataItem]
+
+
+    def __getitem__(self, index: int) -> JsonDataItem:
+        """
+        Method to get the i-th element using the [] notation.
+        
+        :param index: The index of the element to retrieve.
+        :return: The JsonDataItem at the specified index.
+        """
+        return self.data[index].item
+    
+
+    def __setitem__(self, index: int, value: JsonDataItem):
+        """
+        Method to set the i-th element using the [] notation.
+        
+        :param index: The index of the element to set.
+        :param value: The JsonDataItem to set at the specified index.
+        """
+        self.data[index].item = value
+
+    def __len__(self):
+        """
+        Method to get the length of the data container.
+        
+        :return: The length of the data container.
+        """
+        return len(self.data)

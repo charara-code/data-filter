@@ -5,19 +5,15 @@ import os
 
 class BaseDataLoaderConfig(BaseModel):
     
-    data_source: str
+    loader_name: str
 
-    @field_validator('data_source')
-    def check_data_source(cls, value):
+    @field_validator('loader_name')
+    def check_loader_name(cls, value):
         if not isinstance(value, str):
-            raise ValueError("Data source must be a string path to a JSON file")
-        # make sure the path exists
-        if not os.path.exists(value):
-            raise FileNotFoundError(f"File not found: {value}")
+            raise ValueError("loader_name must be a string")
         
-        extension = value.split('.')[-1]
-        if extension not in {'json', 'csv', 'xml', 'yaml'}:
-            raise ValueError(f"Only JSON, CSV, XML, and YAML files are supported for the data loader. Got: {extension}")
+        if value not in {'json', 'csv', 'xml', 'yaml'}:
+            raise ValueError(f"Only JSON, CSV, XML, and YAML files are supported for the data loader. Got: {value}")
 
         return value
     

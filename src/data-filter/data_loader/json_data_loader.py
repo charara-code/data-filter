@@ -1,5 +1,5 @@
-from base_data_loader import BaseDataLoader
-from models.data_containers.json_data_container import JsonDataContainer
+from .base_data_loader import BaseDataLoader
+from ..models.data_containers.json_data_container import JsonDataContainer
 import json, os, logging
 
 
@@ -12,7 +12,7 @@ class JsonDataLoader(BaseDataLoader):
     def load_data(self) -> JsonDataContainer:
         try :
             with open(self.data_source, 'r', encoding="utf-8") as file:
-                data = JsonDataContainer(json.load(file))
+                data = JsonDataContainer(data=json.load(file)["data"])
                 logging.info(f"Data loaded from {self.data_source}")
                 return data
         except FileNotFoundError as e:
