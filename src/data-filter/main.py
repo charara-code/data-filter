@@ -1,18 +1,16 @@
 from .data_loader.factory import Factory
-from .data_loader.csv_data_loader import CSVDataLoader
+from .data_loader.xml_data_loader import XMLDataLoader
 
-loader_name = "csv"    
+loader_name = "xml"    
 
-filepath = "examples/example.csv"
+filepath = "examples/example.xml"
 
-csv_data_loader : CSVDataLoader = Factory.get_data_loader(loader_name=loader_name, data_source=filepath)
+xml_data_loader : XMLDataLoader = Factory.get_data_loader(loader_name=loader_name, data_source=filepath)
 
-data = csv_data_loader.load_data()
+data = xml_data_loader.load_data()
 
+data['flowerShop']['flower'][0]['name'] = "Dead Flower" # TODO: make it easier to access root and child tags
 
+xml_data_loader.save_data(data)
+print(data)
 
-data["Name"][0] = "BLAH BALAH"
-
-csv_data_loader.save_data(data)
-
-print(data["Name"])
