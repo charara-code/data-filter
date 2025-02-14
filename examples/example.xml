@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flowerShop>
+    <shopDetails>
+        <name>Blooming Blossoms</name>
+        <address>
+            <street>123 Petal Lane</street>
+            <city>Floral City</city>
+            <state>CA</state>
+            <zipCode>90210</zipCode>
+        </address>
+        <contact>
+            <phone>123-456-7890</phone>
+            <email>info@bloomingblossoms.com</email>
+        </contact>
+    </shopDetails>
+    <flowers>
+        <flower>
+            <name>Rose</name>
+            <color>Red</color>
+            <price>2.99</price>
+            <stock>150</stock>
+        </flower>
+        <flower>
+            <name>Tulip</name>
+            <color>Yellow</color>
+            <price>1.99</price>
+            <stock>200</stock>
+        </flower>
+        <flower>
+            <name>Orchid</name>
+            <color>Purple</color>
+            <price>5.99</price>
+            <stock>75</stock>
+        </flower>
+        <flower>
+            <name>Daisy</name>
+            <color>White</color>
+            <price>0.99</price>
+            <stock>300</stock>
+        </flower>
+        <flower>
+            <name>Sunflower</name>
+            <color>Yellow</color>
+            <price>1.49</price>
+            <stock>180</stock>
+        </flower>
+    </flowers>
+    <employees>
+        <employee>
+            <name>Jane Doe</name>
+            <position>Manager</position>
+            <contact>
+                <phone>123-456-7891</phone>
+                <email>jane.doe@bloomingblossoms.com</email>
+            </contact>
+        </employee>
+        <employee>
+            <name>John Smith</name>
+            <position>Florist</position>
+            <contact>
+                <phone>123-456-7892</phone>
+                <email>john.smith@bloomingblossoms.com</email>
+            </contact>
+        </employee>
+        <employee>
+            <name>Emily Johnson</name>
+            <position>Cashier</position>
+            <contact>
+                <phone>123-456-7893</phone>
+                <email>emily.johnson@bloomingblossoms.com</email>
+            </contact>
+        </employee>
+    </employees>
+    <suppliers>
+        <supplier>
+            <name>Floral Supplies Inc.</name>
+            <contact>
+                <phone>987-654-3210</phone>
+                <email>sales@floralsuppliesinc.com</email>
+            </contact>
+        </supplier>
+        <supplier>
+            <name>Green Thumb Wholesale</name>
+            <contact>
+                <phone>987-654-3211</phone>
+                <email>info@greenthumbwholesale.com</email>
+            </contact>
+        </supplier>
+    </suppliers>
+    <orders>
+        <order>
+            <orderId>1001</orderId>
+            <customerName>Alice Brown</customerName>
+            <flower>
+                <name>Rose</name>
+                <quantity>12</quantity>
+            </flower>
+            <totalPrice>35.88</totalPrice>
+            <orderDate>2023-10-01</orderDate>
+        </order>
+        <order>
+            <orderId>1002</orderId>
+            <customerName>Bob White</customerName>
+            <flower>
+                <name>Tulip</name>
+                <quantity>20</quantity>
+            </flower>
+            <totalPrice>39.80</totalPrice>
+            <orderDate>2023-10-02</orderDate>
+        </order>
+    </orders>
+</flowerShop>
