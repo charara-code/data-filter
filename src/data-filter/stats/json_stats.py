@@ -103,7 +103,6 @@ class JSONStats:
         return f"JSONStats with {len(self.data_container)} items"
 
 
-# Example usage
 if __name__ == "__main__":
     from ..data_loader.json_data_loader import JsonDataLoader
 
