@@ -1,9 +1,10 @@
 from ..models.data_containers.json_data_container import JsonDataContainer
 from typing import Dict, Any
 import numpy as np
+from .base_stats import BaseStats
 
 
-class JSONStats:
+class JSONStats(BaseStats):
 
     def __init__(self, data_container: JsonDataContainer):
         self.data_container = data_container

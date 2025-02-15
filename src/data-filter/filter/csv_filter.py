@@ -1,8 +1,9 @@
 import pandas as pd
 from typing import Any, List
+from .base_filter import BaseFilter
 
 
-class CSVFilter:
+class CSVFilter(BaseFilter):
 
     def __init__(self, dataframe: pd.DataFrame):
         self.dataframe = dataframe

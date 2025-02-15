@@ -1,8 +1,8 @@
 import pandas as pd
 from typing import List
+from .base_sorter import BaseSorter 
 
-
-class CSVSorter:
+class CSVSorter(BaseSorter):
 
     def __init__(self, dataframe: pd.DataFrame):
         self.dataframe = dataframe

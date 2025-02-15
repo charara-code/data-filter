@@ -4,11 +4,21 @@ from typing import List, Dict, Union
 
 class JsonDataItem(BaseModel):
 
+    """
+    Class to represent a single JSON data item.
+    types can be str, int, float, bool, or a list of str, int, float, or bool.
+    """
+
     item: Dict[str, Union[  str, int, float, bool, List[ Union[str, int, float, bool] ]  ] ]
 
 
 
 class JsonDataContainer(BaseModel):
+
+    """
+    Class to represent a container for JSON data items.
+    """
+
 
     data: List[JsonDataItem]
 

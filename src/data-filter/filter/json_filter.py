@@ -1,8 +1,9 @@
 from ..models.data_containers.json_data_container import JsonDataContainer
 from typing import Any, List
+from .base_filter import BaseFilter 
 
 
-class JSONFilter:
+class JSONFilter(BaseFilter):
 
     def __init__(self, data_container: JsonDataContainer):
         self.data_container = data_container

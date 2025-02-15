@@ -1,8 +1,8 @@
 from ..models.data_containers.json_data_container import JsonDataContainer
 from typing import List
+from .base_sorter import BaseSorter
 
-
-class JsonSorter:
+class JsonSorter(BaseSorter):
 
     def __init__(self, data_container: JsonDataContainer):
         self.data_container = data_container

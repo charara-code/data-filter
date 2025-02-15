@@ -3,6 +3,10 @@ from pydantic import BaseModel, field_validator
 import os
 
 
+"""
+Config module for the data-filter application.
+"""
+
 class BaseDataLoaderConfig(BaseModel):
     
     loader_name: str

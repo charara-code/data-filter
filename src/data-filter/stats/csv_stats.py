@@ -1,8 +1,8 @@
 import pandas as pd
 from typing import Dict, Any
+from .base_stats import BaseStats
 
-
-class CSVStats:
+class CSVStats(BaseStats):
 
     def __init__(self, dataframe: pd.DataFrame):
         self.dataframe = dataframe

@@ -6,6 +6,10 @@ from ..data_loader.xml_data_loader import XMLDataLoader
 
 class Factory:
 
+    """
+    Factory class to create data loaders based on the data source
+    """
+
 
     @staticmethod
     def get_data_loader(loader_name: str, data_source: str) -> BaseDataLoader:
