@@ -4,28 +4,28 @@
         {
             "item": {
                 "field1": "value1",
-                "field2": 2,
+                "field2": 10,
                 "field3": 3.0,
                 "field4": true,
-                "field5": [1, 2, 3]
+                "field5": [99, 2, 3]
             }
         },
         {
             "item": {
                 "field1": "value2",
-                "field2": 3,
-                "field3": 4.0,
+                "field2": 8,
+                "field3": 7.0,
                 "field4": false,
-                "field5": [4, 5, 6]
+                "field5": [59, 5, 6]
             }
         },
         {
             "item": {
                 "field1": "value3",
-                "field2": 4,
+                "field2": 1,
                 "field3": 5.0,
                 "field4": true,
-                "field5": [7, 8, 9]
+                "field5": [9, 8, 9]
             }
         }
     ]
