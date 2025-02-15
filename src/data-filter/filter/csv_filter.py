@@ -112,9 +112,7 @@ class CSVFilter:
         return f"CSVFilter with {len(self.dataframe)} rows"
 
 
-# Example usage
 if __name__ == "__main__":
-    # Example DataFrame
     data = {
         'field1': ['value1', 'value2', 'value3'],
         'field2': [10, 8, 1],
