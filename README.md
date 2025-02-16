@@ -20,7 +20,13 @@ python3 -m pip install --user pipx
 ```bash
 pipx install poetry
 ```
+Then run
+```bash
+poetry env activate
+poetry install
+```
 
+to install dependencies into poetry's virtual environment.
 
 # Run the CLI
 
