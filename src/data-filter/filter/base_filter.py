@@ -77,16 +77,4 @@ class BaseFilter(ABC):
         """
         pass
 
-    @abstractmethod
-    def get_filtered_data(self):
-        """
-        Get the filtered data.
-
-        :return: The filtered data.
-        """
-        pass
-
-
-    @abstractmethod
-    def _compare(self, other: Any) -> bool:
-        pass
+    
