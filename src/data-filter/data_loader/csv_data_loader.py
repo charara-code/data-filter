@@ -14,7 +14,7 @@ class CSVDataLoader(BaseDataLoader):
     Methods:
         load_data() -> pd.DataFrame:
             Loads data from the CSV file specified by data_source and returns it as a pandas DataFrame.
-        
+
         save_data(data: pd.DataFrame):
             Saves the given pandas DataFrame to the CSV file specified by data_source.
     """
@@ -27,7 +27,6 @@ class CSVDataLoader(BaseDataLoader):
             data_source (str): The path to the CSV file to load data from or save data to.
         """
         super().__init__(data_source)
-
 
     def load_data(self) -> pd.DataFrame:
         """
@@ -50,8 +49,6 @@ class CSVDataLoader(BaseDataLoader):
         except Exception as e:
             logging.error(f"Error loading data: {e}")
             print(f"Error loading data: {e}")
-
-
 
     def save_data(self, data: pd.DataFrame):
         """
@@ -76,7 +73,6 @@ class CSVDataLoader(BaseDataLoader):
             logging.error(f"Error saving data: {e}")
             print(f"Error saving data: {e}")
 
-
     def __repr__(self):
         """
         Returns a string representation of the CSVDataLoader object.
@@ -85,7 +81,7 @@ class CSVDataLoader(BaseDataLoader):
             str: A string representation of the CSVDataLoader object.
         """
         return f"Data @ {self.data_source})"
-    
+
     def __str__(self):
         """
         Returns a string representation of the CSVDataLoader object.
@@ -94,7 +90,6 @@ class CSVDataLoader(BaseDataLoader):
             str: A string representation of the CSVDataLoader object.
         """
         return f"Data @ {self.data_source}"
-    
 
     def _get_data_source(self):
         """
@@ -104,7 +99,6 @@ class CSVDataLoader(BaseDataLoader):
             str: The data source.
         """
         return self._data_source
-    
 
     def _set_data_source(self, data_source):
         """
@@ -123,11 +117,8 @@ class CSVDataLoader(BaseDataLoader):
         if not os.path.exists(data_source):
             raise FileNotFoundError(f"File not found: {data_source}")
         # make sure it is a csv file
-        if not data_source.endswith('.csv'):
+        if not data_source.endswith(".csv"):
             raise ValueError("Only CSV files are supported for the CSV data loader")
         self._data_source = data_source
-
-
-
 
     data_source = property(_get_data_source, _set_data_source)

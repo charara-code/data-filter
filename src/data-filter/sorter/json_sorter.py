@@ -2,6 +2,7 @@ from ..models.data_containers.json_data_container import JsonDataContainer
 from typing import List
 from .base_sorter import BaseSorter
 
+
 class JsonSorter(BaseSorter):
 
     def __init__(self, data_container: JsonDataContainer):
@@ -14,7 +15,9 @@ class JsonSorter(BaseSorter):
         :param key: The key to sort by.
         :param reverse: Whether to sort in descending order.
         """
-        self.data_container.data.sort(key=lambda item: self._get_sort_key(item.item.get(key)), reverse=reverse)
+        self.data_container.data.sort(
+            key=lambda item: self._get_sort_key(item.item.get(key)), reverse=reverse
+        )
 
     def sort_by_multiple_keys(self, keys: List[str], reverse: bool = False):
         """
@@ -23,12 +26,17 @@ class JsonSorter(BaseSorter):
         :param keys: The list of keys to sort by.
         :param reverse: Whether to sort in descending order.
         """
-        self.data_container.data.sort(key=lambda item: tuple(self._get_sort_key(item.item.get(key)) for key in keys), reverse=reverse)
+        self.data_container.data.sort(
+            key=lambda item: tuple(
+                self._get_sort_key(item.item.get(key)) for key in keys
+            ),
+            reverse=reverse,
+        )
 
     def _get_sort_key(self, value):
         """
         Helper function to get the sort key.
-        
+
         :param value: The value to get the sort key from.
         :return: The sort key.
         """

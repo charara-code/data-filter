@@ -13,7 +13,7 @@ class JsonDataLoader(BaseDataLoader):
     Methods:
         load_data() -> JsonDataContainer:
             Loads data from the JSON file specified by data_source and returns it as a JsonDataContainer object.
-        
+
         save_data(data: JsonDataContainer):
             Saves the given JsonDataContainer object to the JSON file specified by data_source.
     """
@@ -26,8 +26,7 @@ class JsonDataLoader(BaseDataLoader):
             data_source (str): The path to the JSON file to load data from or save data to.
         """
         super().__init__(data_source)
-        
-    
+
     def load_data(self) -> JsonDataContainer:
         """
         Loads data from the JSON file specified by data_source and returns it as a JsonDataContainer object.
@@ -39,8 +38,8 @@ class JsonDataLoader(BaseDataLoader):
             FileNotFoundError: If the JSON file specified by data_source is not found.
             Exception: If there is an error loading the data.
         """
-        try :
-            with open(self.data_source, 'r', encoding="utf-8") as file:
+        try:
+            with open(self.data_source, "r", encoding="utf-8") as file:
                 data = JsonDataContainer(data=json.load(file)["data"])
                 logging.info(f"Data loaded from {self.data_source}")
                 return data
@@ -50,10 +49,8 @@ class JsonDataLoader(BaseDataLoader):
         except Exception as e:
             logging.error(f"Error loading data: {e}")
             print(f"Error loading data: {e}")
-            
-            
 
-    def save_data(self, data : JsonDataContainer):
+    def save_data(self, data: JsonDataContainer):
         """
         Saves the given JsonDataContainer object to the JSON file specified by data_source.
 
@@ -70,12 +67,11 @@ class JsonDataLoader(BaseDataLoader):
         if not os.path.exists(self.data_source):
             raise FileNotFoundError(f"File not found: {self.data_source}")
         try:
-            with open(self.data_source, 'w', encoding="utf-8") as file:
+            with open(self.data_source, "w", encoding="utf-8") as file:
                 json.dump(data, file, indent=4)
         except Exception as e:
             logging.error(f"Error saving data: {e}")
             print(f"Error saving data: {e}")
-            
 
     def __repr__(self):
         """
@@ -85,7 +81,7 @@ class JsonDataLoader(BaseDataLoader):
             str: A string representation of the JsonDataLoader object.
         """
         return f"Data @ {self.data_source})"
-    
+
     def __str__(self):
         """
         Returns a string representation of the JsonDataLoader object.
@@ -94,7 +90,6 @@ class JsonDataLoader(BaseDataLoader):
             str: A string representation of the JsonDataLoader object.
         """
         return f"Data @ {self.data_source}"
-    
 
     def _get_data_source(self):
         """
@@ -104,7 +99,7 @@ class JsonDataLoader(BaseDataLoader):
             str: The data source.
         """
         return self._data_source
-    
+
     def _set_data_source(self, data_source):
         """
         Sets the data source.
@@ -122,12 +117,8 @@ class JsonDataLoader(BaseDataLoader):
         if not os.path.exists(data_source):
             raise FileNotFoundError(f"File not found: {data_source}")
         # make sure it is a json file
-        if not data_source.endswith('.json'):
+        if not data_source.endswith(".json"):
             raise ValueError("Only JSON files are supported for the json data loader")
         self._data_source = data_source
 
-
     data_source = property(_get_data_source, _set_data_source)
-    
-    
-    

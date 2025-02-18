@@ -22,7 +22,9 @@ class JSONStats(BaseStats):
                     if key not in numeric_stats:
                         numeric_stats[key] = []
                     numeric_stats[key].append(value)
-                elif isinstance(value, list) and all(isinstance(i, (int, float)) for i in value):
+                elif isinstance(value, list) and all(
+                    isinstance(i, (int, float)) for i in value
+                ):
                     if key not in numeric_stats:
                         numeric_stats[key] = []
                     numeric_stats[key].append(len(value))
@@ -30,9 +32,9 @@ class JSONStats(BaseStats):
         stats = {}
         for key, values in numeric_stats.items():
             stats[key] = {
-                'min': np.min(values),
-                'max': np.max(values),
-                'average': np.mean(values)
+                "min": np.min(values),
+                "max": np.max(values),
+                "average": np.mean(values),
             }
         return stats
 
@@ -47,18 +49,18 @@ class JSONStats(BaseStats):
             for key, value in item.item.items():
                 if isinstance(value, bool):
                     if key not in boolean_stats:
-                        boolean_stats[key] = {'true': 0, 'false': 0}
+                        boolean_stats[key] = {"true": 0, "false": 0}
                     if value:
-                        boolean_stats[key]['true'] += 1
+                        boolean_stats[key]["true"] += 1
                     else:
-                        boolean_stats[key]['false'] += 1
+                        boolean_stats[key]["false"] += 1
 
         stats = {}
         for key, counts in boolean_stats.items():
-            total = counts['true'] + counts['false']
+            total = counts["true"] + counts["false"]
             stats[key] = {
-                'true_percentage': (counts['true'] / total) * 100,
-                'false_percentage': (counts['false'] / total) * 100
+                "true_percentage": (counts["true"] / total) * 100,
+                "false_percentage": (counts["false"] / total) * 100,
             }
         return stats
 
@@ -79,9 +81,9 @@ class JSONStats(BaseStats):
         stats = {}
         for key, values in list_stats.items():
             stats[key] = {
-                'min_size': np.min(values),
-                'max_size': np.max(values),
-                'average_size': np.mean(values)
+                "min_size": np.min(values),
+                "max_size": np.max(values),
+                "average_size": np.mean(values),
             }
         return stats
 
@@ -92,9 +94,9 @@ class JSONStats(BaseStats):
         :return: A dictionary with all statistics.
         """
         return {
-            'numeric_stats': self.get_numeric_stats(),
-            'boolean_stats': self.get_boolean_stats(),
-            'list_stats': self.get_list_stats()
+            "numeric_stats": self.get_numeric_stats(),
+            "boolean_stats": self.get_boolean_stats(),
+            "list_stats": self.get_list_stats(),
         }
 
     def __repr__(self):

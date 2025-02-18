@@ -4,8 +4,6 @@ from typing import Any, List
 
 class BaseFilter(ABC):
 
-    
-
     @abstractmethod
     def filter_by_string_contains(self, column: str, substring: str):
         """
@@ -67,7 +65,9 @@ class BaseFilter(ABC):
         pass
 
     @abstractmethod
-    def filter_by_list_average(self, column: str, avg_value: float, comparison: str = 'eq'):
+    def filter_by_list_average(
+        self, column: str, avg_value: float, comparison: str = "eq"
+    ):
         """
         Filter by checking if the average value in the list meets the comparison criteria.
 
@@ -76,5 +76,3 @@ class BaseFilter(ABC):
         :param comparison: The type of comparison ('eq', 'lt', 'gt').
         """
         pass
-
-    

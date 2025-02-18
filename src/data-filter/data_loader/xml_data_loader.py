@@ -8,7 +8,6 @@ class XMLDataLoader(BaseDataLoader):
     def __init__(self, data_source):
         super().__init__(data_source)
 
-
     def load_data(self) -> dict:
 
         try:
@@ -34,18 +33,15 @@ class XMLDataLoader(BaseDataLoader):
             logging.error(f"Error saving data: {e}")
             print(f"Error saving data: {e}")
 
-
-
     def __repr__(self):
         return f"Data @ {self.data_source})"
-    
+
     def __str__(self):
         return f"Data @ {self.data_source}"
-    
 
     def _get_data_source(self):
         return self._data_source
-    
+
     def _set_data_source(self, data_source):
         if not isinstance(data_source, str):
             raise ValueError("Data source must be a string path to an XML file")
@@ -53,9 +49,8 @@ class XMLDataLoader(BaseDataLoader):
         if not os.path.exists(data_source):
             raise FileNotFoundError(f"File not found: {data_source}")
         # make sure it is an xml file
-        if not data_source.endswith('.xml'):
+        if not data_source.endswith(".xml"):
             raise ValueError("Only XML files are supported for the XML data loader")
         self._data_source = data_source
-
 
     data_source = property(_get_data_source, _set_data_source)

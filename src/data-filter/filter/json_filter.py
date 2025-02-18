@@ -1,6 +1,6 @@
 from ..models.data_containers.json_data_container import JsonDataContainer
 from typing import Any, List
-from .base_filter import BaseFilter 
+from .base_filter import BaseFilter
 
 
 class JSONFilter(BaseFilter):
@@ -8,7 +8,7 @@ class JSONFilter(BaseFilter):
     def __init__(self, data_container: JsonDataContainer):
         self.data_container = data_container
 
-    def filter_by_key(self, key: str, value: Any, comparison: str = 'eq'):
+    def filter_by_key(self, key: str, value: Any, comparison: str = "eq"):
         """
         Filter the data container by a specific key and value.
 
@@ -16,7 +16,7 @@ class JSONFilter(BaseFilter):
         :param value: The value to compare against.
         :param comparison: The type of comparison ('eq', 'lt', 'gt').
         """
-        if comparison not in ['eq', 'lt', 'gt']:
+        if comparison not in ["eq", "lt", "gt"]:
             raise ValueError("Comparison must be 'eq', 'lt', or 'gt'")
 
         filtered_data = []
@@ -34,7 +34,11 @@ class JSONFilter(BaseFilter):
         :param key: The key to filter by.
         :param substring: The substring to check for.
         """
-        filtered_data = [item for item in self.data_container.data if substring in item.item.get(key, '')]
+        filtered_data = [
+            item
+            for item in self.data_container.data
+            if substring in item.item.get(key, "")
+        ]
         self.data_container.data = filtered_data
 
     def filter_by_string_startswith(self, key: str, prefix: str):
@@ -44,7 +48,11 @@ class JSONFilter(BaseFilter):
         :param key: The key to filter by.
         :param prefix: The prefix to check for.
         """
-        filtered_data = [item for item in self.data_container.data if item.item.get(key, '').startswith(prefix)]
+        filtered_data = [
+            item
+            for item in self.data_container.data
+            if item.item.get(key, "").startswith(prefix)
+        ]
         self.data_container.data = filtered_data
 
     def filter_by_string_endswith(self, key: str, suffix: str):
@@ -54,7 +62,11 @@ class JSONFilter(BaseFilter):
         :param key: The key to filter by.
         :param suffix: The suffix to check for.
         """
-        filtered_data = [item for item in self.data_container.data if item.item.get(key, '').endswith(suffix)]
+        filtered_data = [
+            item
+            for item in self.data_container.data
+            if item.item.get(key, "").endswith(suffix)
+        ]
         self.data_container.data = filtered_data
 
     def filter_by_list_all_elements(self, key: str, elements: List[Any]):
@@ -64,7 +76,11 @@ class JSONFilter(BaseFilter):
         :param key: The key to filter by.
         :param elements: The elements to check for.
         """
-        filtered_data = [item for item in self.data_container.data if all(elem in item.item.get(key, []) for elem in elements)]
+        filtered_data = [
+            item
+            for item in self.data_container.data
+            if all(elem in item.item.get(key, []) for elem in elements)
+        ]
         self.data_container.data = filtered_data
 
     def filter_by_list_min(self, key: str, min_value: Any):
@@ -74,7 +90,11 @@ class JSONFilter(BaseFilter):
         :param key: The key to filter by.
         :param min_value: The minimum value to compare against.
         """
-        filtered_data = [item for item in self.data_container.data if min(item.item.get(key, [])) >= min_value]
+        filtered_data = [
+            item
+            for item in self.data_container.data
+            if min(item.item.get(key, [])) >= min_value
+        ]
         self.data_container.data = filtered_data
 
     def filter_by_list_max(self, key: str, max_value: Any):
@@ -84,10 +104,16 @@ class JSONFilter(BaseFilter):
         :param key: The key to filter by.
         :param max_value: The maximum value to compare against.
         """
-        filtered_data = [item for item in self.data_container.data if max(item.item.get(key, [])) <= max_value]
+        filtered_data = [
+            item
+            for item in self.data_container.data
+            if max(item.item.get(key, [])) <= max_value
+        ]
         self.data_container.data = filtered_data
 
-    def filter_by_list_average(self, key: str, avg_value: float, comparison: str = 'eq'):
+    def filter_by_list_average(
+        self, key: str, avg_value: float, comparison: str = "eq"
+    ):
         """
         Filter the data container by checking if the average value in the list meets the comparison criteria.
 
@@ -119,11 +145,11 @@ class JSONFilter(BaseFilter):
         if isinstance(value, list):
             value = len(value)
 
-        if comparison == 'eq':
+        if comparison == "eq":
             return item_value == value
-        elif comparison == 'lt':
+        elif comparison == "lt":
             return item_value < value
-        elif comparison == 'gt':
+        elif comparison == "gt":
             return item_value > value
 
     def get_filtered_data(self) -> JsonDataContainer:
@@ -148,7 +174,7 @@ if __name__ == "__main__":
     data_container = data_loader.load_data()
 
     filterer = JSONFilter(data_container)
-    filterer.filter_by_key("field2", 5, comparison='gt')
+    filterer.filter_by_key("field2", 5, comparison="gt")
     filtered_data = filterer.get_filtered_data()
 
     print(filtered_data)

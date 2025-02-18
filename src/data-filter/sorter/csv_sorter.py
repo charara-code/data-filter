@@ -1,6 +1,7 @@
 import pandas as pd
 from typing import List
-from .base_sorter import BaseSorter 
+from .base_sorter import BaseSorter
+
 
 class CSVSorter(BaseSorter):
 
@@ -16,7 +17,9 @@ class CSVSorter(BaseSorter):
         """
         self.dataframe = self.dataframe.sort_values(by=column, ascending=ascending)
 
-    def sort_by_multiple_columns(self, columns: List[str], ascending: List[bool] = None):
+    def sort_by_multiple_columns(
+        self, columns: List[str], ascending: List[bool] = None
+    ):
         """
         Sort the DataFrame by multiple columns.
 
@@ -44,16 +47,16 @@ class CSVSorter(BaseSorter):
 
 if __name__ == "__main__":
     data = {
-        'field1': ['value1', 'value2', 'value3'],
-        'field2': [10, 8, 1],
-        'field3': [3.0, 7.0, 5.0],
-        'field4': [True, False, True],
-        'field5': [[99, 2, 3], [59, 5, 6], [9, 8, 9]]
+        "field1": ["value1", "value2", "value3"],
+        "field2": [10, 8, 1],
+        "field3": [3.0, 7.0, 5.0],
+        "field4": [True, False, True],
+        "field5": [[99, 2, 3], [59, 5, 6], [9, 8, 9]],
     }
     df = pd.DataFrame(data)
 
     sorter = CSVSorter(df)
-    sorter.sort_by_column('field2')
+    sorter.sort_by_column("field2")
     sorted_df = sorter.get_sorted_dataframe()
 
     print(sorted_df)

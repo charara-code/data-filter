@@ -2,8 +2,8 @@ from pydantic import BaseModel
 from collections import defaultdict
 import xml.etree.ElementTree as ET
 
-class XMLDataContainer(BaseModel):
 
+class XMLDataContainer(BaseModel):
 
     @staticmethod
     def _as_py_dict(xml_file_path) -> dict:
@@ -15,13 +15,12 @@ class XMLDataContainer(BaseModel):
             for child in element:
                 result[child.tag].append(xml_to_dict(child))
             return {k: v if len(v) > 1 else v[0] for k, v in result.items()}
-    
+
         tree = ET.parse(xml_file_path)
         root = tree.getroot()
         xml_dict = {root.tag: xml_to_dict(root)}
-        
+
         return xml_dict
-    
 
     @staticmethod
     def _from_py_dict(data: dict, xml_file_path):
@@ -42,4 +41,4 @@ class XMLDataContainer(BaseModel):
         root_tag = list(data.keys())[0]
         root_element = dict_to_xml(root_tag, data[root_tag])
         tree = ET.ElementTree(root_element)
-        tree.write(xml_file_path, encoding='utf-8', xml_declaration=True)
+        tree.write(xml_file_path, encoding="utf-8", xml_declaration=True)

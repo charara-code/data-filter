@@ -2,6 +2,7 @@ import pandas as pd
 from typing import Dict, Any
 from .base_stats import BaseStats
 
+
 class CSVStats(BaseStats):
 
     def __init__(self, dataframe: pd.DataFrame):
@@ -14,13 +15,13 @@ class CSVStats(BaseStats):
         :return: A dictionary with statistics for each numeric column.
         """
         numeric_stats = {}
-        numeric_columns = self.dataframe.select_dtypes(include=['number']).columns
+        numeric_columns = self.dataframe.select_dtypes(include=["number"]).columns
 
         for column in numeric_columns:
             numeric_stats[column] = {
-                'min': self.dataframe[column].min(),
-                'max': self.dataframe[column].max(),
-                'average': self.dataframe[column].mean()
+                "min": self.dataframe[column].min(),
+                "max": self.dataframe[column].max(),
+                "average": self.dataframe[column].mean(),
             }
 
         return numeric_stats
@@ -32,15 +33,15 @@ class CSVStats(BaseStats):
         :return: A dictionary with statistics for each boolean column.
         """
         boolean_stats = {}
-        boolean_columns = self.dataframe.select_dtypes(include=['bool']).columns
+        boolean_columns = self.dataframe.select_dtypes(include=["bool"]).columns
 
         for column in boolean_columns:
             true_count = self.dataframe[column].sum()
             false_count = len(self.dataframe) - true_count
             total = len(self.dataframe)
             boolean_stats[column] = {
-                'true_percentage': (true_count / total) * 100,
-                'false_percentage': (false_count / total) * 100
+                "true_percentage": (true_count / total) * 100,
+                "false_percentage": (false_count / total) * 100,
             }
 
         return boolean_stats
@@ -52,15 +53,15 @@ class CSVStats(BaseStats):
         :return: A dictionary with statistics for each list column.
         """
         list_stats = {}
-        list_columns = self.dataframe.select_dtypes(include=['object']).columns
+        list_columns = self.dataframe.select_dtypes(include=["object"]).columns
 
         for column in list_columns:
             if self.dataframe[column].apply(lambda x: isinstance(x, list)).all():
                 sizes = self.dataframe[column].apply(len)
                 list_stats[column] = {
-                    'min_size': sizes.min(),
-                    'max_size': sizes.max(),
-                    'average_size': sizes.mean()
+                    "min_size": sizes.min(),
+                    "max_size": sizes.max(),
+                    "average_size": sizes.mean(),
                 }
 
         return list_stats
@@ -72,9 +73,9 @@ class CSVStats(BaseStats):
         :return: A dictionary with all statistics.
         """
         return {
-            'numeric_stats': self.get_numeric_stats(),
-            'boolean_stats': self.get_boolean_stats(),
-            'list_stats': self.get_list_stats()
+            "numeric_stats": self.get_numeric_stats(),
+            "boolean_stats": self.get_boolean_stats(),
+            "list_stats": self.get_list_stats(),
         }
 
     def __repr__(self):
@@ -86,11 +87,11 @@ class CSVStats(BaseStats):
 
 if __name__ == "__main__":
     data = {
-        'field1': ['value1', 'value2', 'value3'],
-        'field2': [10, 8, 1],
-        'field3': [3.0, 7.0, 5.0],
-        'field4': [True, False, True],
-        'field5': [[99, 2, 3], [59, 5, 6], [9, 8, 9]]
+        "field1": ["value1", "value2", "value3"],
+        "field2": [10, 8, 1],
+        "field3": [3.0, 7.0, 5.0],
+        "field4": [True, False, True],
+        "field5": [[99, 2, 3], [59, 5, 6], [9, 8, 9]],
     }
     df = pd.DataFrame(data)
 
