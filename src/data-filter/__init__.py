@@ -29,7 +29,7 @@ def create_cli():
 
         # sort command
         sort_parser = subparsers.add_parser("sort", help="Sort data")
-        sort_parser.add_argument("file", type=str, help="Path to the data file")
+        # sort_parser.add_argument("file", type=str, help="Path to the data file")
         sort_parser.add_argument("key", type=str, help="Key/Column to sort by")
         sort_parser.add_argument(
             "--reverse", action="store_true", help="Sort in descending order"
